@@ -17,20 +17,56 @@ public class ListExample {
     }
 
     public static void main(String[] args) {
-        List<Integer> indexSet = indexListCreator(10);
-        List<SampleObj> data = new ArrayList<>();
+        List<Integer> indexSet = indexListCreator(4);
+        List<SampleObj> data1 = new ArrayList<>();
+        List<SampleObj> data2 = new ArrayList<>();
+        List<SampleObj> data3 = new ArrayList<>();
+        List<SampleObj> data4 = new ArrayList<>();
 
         // case1: Not use indexCreator and create constructor before for loop.
-        SampleObj sampleObj = new SampleObj();
+        System.out.println("case1");
+
+        SampleObj sampleObj1 = new SampleObj();
         for (int index : indexSet) {
-            sampleObj.setIndex(index);
-            sampleObj.setGrade("grade "+(index%3+1));
-            sampleObj.setName("name"+(index%3+1));
+            sampleObj1.setIndex(index);
+            sampleObj1.setGrade("grade "+(index%3+1));
+            sampleObj1.setName("name"+index);
 
-            data.add(sampleObj);
+            data1.add(sampleObj1);
         }
-        for(SampleObj obj : data)
+        for(SampleObj obj : data1)
             System.out.println(obj.toString());
+        System.out.println("<--          -->");
 
+        // case2: Not use indexCreator and create constructor after for loop
+        System.out.println("case2");
+
+        for (int index : indexSet) {
+            SampleObj sampleObj2 = new SampleObj();
+            sampleObj2.setIndex(index);
+            sampleObj2.setName("name"+index);
+            sampleObj2.setGrade("grade "+(index%3+1));
+
+            data2.add(sampleObj2);
+        }
+
+        for(SampleObj obj : data2)
+            System.out.println(obj.toString());
+        System.out.println("<--          -->");
+
+        // case3: Use indexCreator
+        System.out.println("case3");
+
+        for (int index : indexSet) {
+            SampleObj sampleObj3 = indexCreator(index);
+            sampleObj3.setName("name"+index);
+            sampleObj3.setGrade("grade "+(index%3+1));
+
+            data3.add(sampleObj3);
+        }
+
+        for(SampleObj obj : data3)
+            System.out.println(obj.toString());
+        System.out.println("<--          -->");
     }
 }
