@@ -1,7 +1,17 @@
-public class SampleObj {
+public class SingletonObj {
     private int index;
     private String name;
     private String grade;
+
+    private SingletonObj() {}
+
+    private static class LazyHolder {
+        public static final SingletonObj INSTANCE = new SingletonObj();
+    }
+
+    public static SingletonObj getInstance() {
+        return LazyHolder.INSTANCE;
+    }
 
     // getter
     public int getIndex() {

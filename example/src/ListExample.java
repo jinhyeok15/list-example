@@ -21,7 +21,7 @@ public class ListExample {
         List<SampleObj> data1 = new ArrayList<>();
         List<SampleObj> data2 = new ArrayList<>();
         List<SampleObj> data3 = new ArrayList<>();
-        List<SampleObj> data4 = new ArrayList<>();
+        List<SingletonObj> data4 = new ArrayList<>();
 
         // case1: Not use indexCreator and create constructor before for loop.
         System.out.println("case1");
@@ -66,6 +66,22 @@ public class ListExample {
         }
 
         for(SampleObj obj : data3)
+            System.out.println(obj.toString());
+        System.out.println("<--          -->");
+
+        // case4: Use Singleton
+        System.out.println("case4");
+
+        for (int index : indexSet) {
+            SingletonObj singletonObj = SingletonObj.getInstance();
+            singletonObj.setIndex(index);
+            singletonObj.setName("name"+index);
+            singletonObj.setGrade("grade "+(index%3+1));
+
+            data4.add(singletonObj);
+        }
+
+        for(SingletonObj obj : data4)
             System.out.println(obj.toString());
         System.out.println("<--          -->");
     }
