@@ -3,6 +3,8 @@ public class SampleObj {
     private String name;
     private String grade;
 
+    SampleObj() {}
+
     // getter
     public int getIndex() {
         return index;
